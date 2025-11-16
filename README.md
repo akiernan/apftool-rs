@@ -84,7 +84,7 @@ afptool-rs pack-rkfw <input_directory> <output_file> --chip <chip> --version <ve
 
 Example:
 ```bash
-$ afptool-rs pack-rkfw ./out ./repacked.img --chip RK3562 --version 1.0.0 --timestamp ^C62435994 --code 0x02000000
+$ afptool-rs pack-rkfw ./out ./repacked.img --chip RK3562 --version 1.0.0 --timestamp 1762435994 --code 0x02000000
 Successfully packed RKFW image:
   Output: ./repacked.img
   Version: 1.0.0
