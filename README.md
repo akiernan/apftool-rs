@@ -75,6 +75,24 @@ model:  RK3562
 Partition metadata saved to: ./out/partition-metadata.txt
 ```
 
+### Run Ignored Integration Suites
+
+Some integration-style tests exercise the full CLI binary and are marked with
+`#[ignore]` to avoid running them on every `cargo test`. You can run these
+targeted suites when you have the mocked firmware files available:
+
+```bash
+# Advanced scenarios from tests/advanced_tests.rs
+cargo test advanced_tests -- --ignored
+
+# CLI level assertions from tests/cli_tests.rs
+cargo test cli_tests -- --ignored
+```
+
+The helpers in `tests/advanced_tests.rs` and `tests/cli_tests.rs` will generate
+temporary RKFW/RKAF mock artifacts under `tests/data/integration`, so no
+additional setup is required beyond ensuring the output directory is writable.
+
 ### Packing
 
 **Pack RKFW firmware:**

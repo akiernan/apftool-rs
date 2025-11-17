@@ -100,6 +100,24 @@ cargo test
 cargo test -- --include-ignored
 ```
 
+### 运行被忽略的集成测试
+
+部分集成测试会调用完整的命令行可执行文件，因此通过 `#[ignore]`
+标记避免在每次 `cargo test` 时运行。若需要验证这些场景，可以在有
+模拟固件文件的情况下单独执行：
+
+```bash
+# tests/advanced_tests.rs 中的高级场景
+cargo test advanced_tests -- --ignored
+
+# tests/cli_tests.rs 中的 CLI 级断言
+cargo test cli_tests -- --ignored
+```
+
+`tests/advanced_tests.rs` 与 `tests/cli_tests.rs` 中的辅助函数会在
+`tests/data/integration` 目录下生成临时的 RKFW/RKAF 模拟文件，因此只
+需确保输出目录可写，无需额外准备数据。
+
 ### 运行特定测试
 
 ```bash
